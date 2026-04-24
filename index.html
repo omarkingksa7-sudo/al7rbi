@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>HACKED BY JA7EEM | DARK MATRIX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0c0c0c;
+            color: #00ff9d;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            line-height: 1.6;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 157, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 157, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* glitch effect overlay */
+        .glitch-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 157, 0.03) 0px,
+                rgba(0, 255, 157, 0.03) 2px,
+                transparent 2px,
+                transparent 6px
+            );
+            pointer-events: none;
+            z-index: 2;
+            animation: glitchScan 8s linear infinite;
+        }
+
+        @keyframes glitchScan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* noise effect */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,0) 0px, rgba(0,255,157,0.02) 2px, transparent 3px);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid #00ff9d;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ff9d, #00ff9d, transparent, #00ff9d);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .container:hover::before {
+            opacity: 0.3;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #00ff9d;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            color: #00ff9d;
+            text-shadow: 0 0 10px #00ff9d;
+            font-weight: normal;
+            word-break: break-word;
+        }
+
+        .glitch-text {
+            animation: textGlitch 3s infinite;
+        }
+
+        @keyframes textGlitch {
+            0%, 100% { text-shadow: 0 0 10px #00ff9d; }
+            95% { text-shadow: 0 0 10px #00ff9d; }
+            96% { text-shadow: -2px 0 red, 2px 0 blue; }
+            97% { text-shadow: 2px 0 red, -2px 0 blue; }
+        }
+
+        .badge {
+            display: inline-block;
+            background: #00ff9d;
+            color: #000;
+            padding: 4px 12px;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .status-bar {
+            background: #1a1a1a;
+            padding: 12px;
+            margin: 20px 0;
+            border-left: 3px solid #00ff9d;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .status-bar span {
+            color: #00ff9d;
+            font-weight: bold;
+        }
+
+        .message-box {
+            background: #0a0a0a;
+            border: 1px solid #00ff9d;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .message-box::after {
+            content: '>';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #00ff9d;
+            font-weight: bold;
+        }
+
+        .message-box p {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .message-box p:first-of-type {
+            color: #00ff9d;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .discord-link {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #00ff9d;
+            padding: 10px 25px;
+            color: #00ff9d;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discord-link:hover {
+            background: #00ff9d;
+            color: #000;
+            box-shadow: 0 0 20px #00ff9d;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            padding: 15px;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px dashed #333;
+            font-size: 0.7rem;
+            color: #666;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #00ff9d;
+            animation: blink 1s infinite;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* matrix rain container */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        .floating-stats {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 10px;
+            color: #00ff9d;
+            font-family: monospace;
+            z-index: 20;
+            background: rgba(0,0,0,0.7);
+            padding: 5px 10px;
+            border-left: 2px solid #00ff9d;
+        }
+
+        @keyframes shakeEffect {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+        }
+
+        .shake {
+            animation: shakeEffect 0.15s ease-in-out 0s 3;
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 0 #00ff9d; }
+            100% { text-shadow: 0 0 20px #00ff9d, 0 0 30px #00ff9d; }
+        }
+
+        .glow-pulse {
+            animation: pulseGlow 0.5s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            .container { padding: 20px; margin: 20px; }
+            .message-box p { font-size: 0.9rem; }
+        }
+
+        /* terminal line effect */
+        .terminal-line {
+            color: #00ff9d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="glitch-overlay"></div>
+    <div class="noise"></div>
+    <div class="matrix-bg" id="matrixCanvas"></div>
+    <div class="floating-stats" id="liveStats">⚡ SYSTEM ONLINE ⚡</div>
+
+    <div class="container" id="mainContainer">
+        <div class="header">
+            <h1 class="glitch-text">> JA7EEM_ACCESS <span id="cursorTitle">_</span></h1>
+            <div class="badge"># ROOT_ACCESS_GRANTED #</div>
+        </div>
+
+        <div class="status-bar">
+            <span>$> STATUS:</span> تم الوصول الئ المعلومات<br>
+            <span>$> ENCRYPTION:</span> تم<br>
+            <span>$> TARGET:</span> discord.gg/j7e
+        </div>
+
+        <div id="terminalOutput" class="status-bar" style="font-family: monospace; min-height: 60px;"></div>
+
+        <div class="message-box">
+            <p>✦ MESSAGE_FROM_JA7EEM ✦</p>
+            <p>السلام عليكم ورحمة الله وبركاته</p>
+            <p>السيرفر كامل ثغرات، الأمان صفر.</p>
+            <p>تعال الديسكورد واستمتع معانا 🔥</p>
+            <p style="margin-top: 20px;">
+                <a href="#" id="discordFakeLink" class="discord-link">>> JOIN_DISCORD <<</a>
+            </p>
+            <p style="font-size:0.7rem; margin-top: 15px;">[ ACCESS_CODE: JA7EEM_2024 ]</p>
+        </div>
+
+        <div class="signature">
+            —<br>
+            OPTICALY BLACKSHOWER / SANNUITISME<br>
+            🇵🇸 🇩🇿<br>
+            <span id="timestamp"></span>
+        </div>
+
+        <div class="footer">
+            [ SYSTEM_BREACHED ] [ ACCESS_LOGGED ] [ STEALTH_MODE_ACTIVE ]
+        </div>
+    </div>
+
+    <audio id="hackedAudio" loop>
+        <source src="aa.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        (function() {
+            // Matrix rain effect
+            const matrixDiv = document.getElementById('matrixCanvas');
+            const matrixCanvas = document.createElement('canvas');
+            matrixCanvas.style.width = '100%';
+            matrixCanvas.style.height = '100%';
+            matrixCanvas.style.position = 'fixed';
+            matrixCanvas.style.top = '0';
+            matrixCanvas.style.left = '0';
+            matrixDiv.appendChild(matrixCanvas);
+            
+            const ctx = matrixCanvas.getContext('2d');
+            let width, height;
+            let drops = [];
+            const matrixChars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+
+            function resizeMatrix() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                matrixCanvas.width = width;
+                matrixCanvas.height = height;
+                const columns = Math.floor(width / 20);
+                drops = [];
+                for (let i = 0; i < columns; i++) {
+                    drops.push(Math.floor(Math.random() * -height / 20));
+                }
+            }
+
+            function drawMatrix() {
+                if (!ctx) return;
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, width, height);
+                ctx.font = '15px "Courier New", monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                    const x = i * 20;
+                    const y = drops[i] * 20;
+                    
+                    if (y > 0 && y < height) {
+                        const opacity = Math.random() * 0.5 + 0.2;
+                        ctx.fillStyle = `rgba(0, 255, 157, ${opacity})`;
+                        ctx.fillText(char, x, y);
+                    }
+                    
+                    if (y > height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+                requestAnimationFrame(drawMatrix);
+            }
+
+            resizeMatrix();
+            drawMatrix();
+            window.addEventListener('resize', resizeMatrix);
+
+            // Terminal typing effect
+            const terminalOutput = document.getElementById('terminalOutput');
+            const terminalLines = [
+                "$> اما توردها مواريد الابطال ولا استرح وخل المراجل لاهلها...",
+                "$> سيرفركم تعبان...",
+                "$> تعالوا سيرفر الجحيم",
+                "$> WELCOME_JA7EEM"
+            ];
+            
+            let lineIndex = 0;
+            let charIndex = 0;
+            let currentText = '';
+            
+            function typeTerminal() {
+                if (lineIndex < terminalLines.length) {
+                    if (charIndex < terminalLines[lineIndex].length) {
+                        currentText += terminalLines[lineIndex][charIndex];
+                        terminalOutput.innerHTML = currentText + '<span class="cursor"></span>';
+                        charIndex++;
+                        setTimeout(typeTerminal, 30);
+                    } else {
+                        currentText += '<br>';
+                        terminalOutput.innerHTML = currentText + '<span class="cursor"></span>';
+                        lineIndex++;
+                        charIndex = 0;
+                        setTimeout(typeTerminal, 100);
+                    }
+                } else {
+                    terminalOutput.innerHTML = currentText;
+                }
+            }
+            
+            typeTerminal();
+
+            // Live stats update
+            const liveStats = document.getElementById('liveStats');
+            const timestampSpan = document.getElementById('timestamp');
+            
+            function updateStats() {
+                const now = new Date();
+                timestampSpan.innerHTML = `⚡ ${now.toLocaleString()} ⚡`;
+                
+                const connections = Math.floor(Math.random() * 1000) + 500;
+                const packets = Math.floor(Math.random() * 9999);
+                liveStats.innerHTML = `🖥️ ACTIVE_CONNECTIONS: ${connections} | PACKETS: ${packets} | MODE: STEALTH`;
+            }
+            
+            updateStats();
+            setInterval(updateStats, 3000);
+
+            // Random shake and glow effects
+            const container = document.getElementById('mainContainer');
+            const title = document.querySelector('h1');
+            
+            setInterval(() => {
+                if (Math.random() > 0.85) {
+                    container.classList.add('shake');
+                    setTimeout(() => container.classList.remove('shake'), 300);
+                }
+            }, 4000);
+            
+            setInterval(() => {
+                if (Math.random() > 0.9) {
+                    title.classList.add('glow-pulse');
+                    setTimeout(() => title.classList.remove('glow-pulse'), 500);
+                }
+            }, 3000);
+
+            // Audio handling
+            const audio = document.getElementById('hackedAudio');
+            const playAudio = () => {
+                audio.play().catch(e => console.log("Audio play blocked"));
+                document.removeEventListener('click', playAudio);
+                document.removeEventListener('keydown', playAudio);
+            };
+            
+            audio.play().catch(() => {
+                document.addEventListener('click', playAudio);
+                document.addEventListener('keydown', playAudio);
+            });
+
+            // Discord link
+            const link = document.getElementById('discordFakeLink');
+            if (link) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.open('https://discord.gg/j7e', '_blank');
+                });
+            }
+
+            // Animated cursor for title
+            const cursorTitle = document.getElementById('cursorTitle');
+            let showCursor = true;
+            setInterval(() => {
+                showCursor = !showCursor;
+                if (cursorTitle) {
+                    cursorTitle.textContent = showCursor ? '_' : ' ';
+                }
+            }, 500);
+
+            // Console log
+            console.log("%c[+] JA7EEM SYSTEM ACTIVE [+]", "color: #00ff9d; font-size: 14px; font-weight: bold");
+            console.log("%c[+] TARGET: discord.gg/j7e [+]", "color: #00ff9d");
+            console.log("%c[+] STATUS: BREACH_COMPLETE [+]", "color: #00ff9d");
+
+            // Random glitch effect on text
+            const glitchElements = document.querySelectorAll('.glitch-text, .message-box p');
+            setInterval(() => {
+                if (Math.random() > 0.95) {
+                    glitchElements.forEach(el => {
+                        if (el.style) {
+                            el.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                            setTimeout(() => {
+                                el.style.transform = '';
+                            }, 100);
+                        }
+                    });
+                }
+            }, 2000);
+        })();
+    </script>
+</body>
+</html>
